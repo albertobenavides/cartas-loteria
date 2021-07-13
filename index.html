@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Cartas restantes: <span id="total">54</span></p>
+    <p>Carta actual: <span id="actual"></span></p>
+    <p><button id="nueva">Nueva carta</button></p>
+    <p>Cartas salidas</p>
+    <ul id="jugadas">
+    </ul>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            cartas = [
+                '1 El gallo',
+                '2 El diablito',
+                '3 La dama',
+                '4 El catrín',
+                '5 El paraguas',
+                '6 La sirena',
+                '7 La escalera',
+                '8 La botella',
+                '9 El barril',
+                '10 El árbol',
+                '11 El melón',
+                '12 El valiente',
+                '13 El gorrito',
+                '14 La muerte',
+                '15 La pera',
+                '16 La bandera',
+                '17 El bandolón',
+                '18 El violoncello',
+                '19 La garza',
+                '20 El pájaro',
+                '21 La mano',
+                '22 La bota',
+                '23 La luna',
+                '24 El cotorro',
+                '25 El borracho',
+                '26 El negrito',
+                '27 El corazón',
+                '28 La sandía',
+                '29 El tambor',
+                '30 El camarón',
+                '31 Las jaras',
+                '32 El músico',
+                '33 La araña',
+                '34 El soldado',
+                '35 La estrella',
+                '36 El cazo',
+                '37 El mundo',
+                '38 El apache',
+                '39 El nopal',
+                '40 El alacrán',
+                '41 La rosa',
+                '42 La calavera',
+                '43 La campana',
+                '44 El cantarito',
+                '45 El venado',
+                '46 El sol',
+                '47 La corona',
+                '48 La chalupa',
+                '49 El pino',
+                '50 El pescado',
+                '51 La palma',
+                '52 La maceta',
+                '53 El arpa',
+                '54 La rana'
+            ];
+
+            cartas = shuffleArray(cartas);
+
+            i = 0;
+            
+            $('#nueva').click(function(){
+                $('#jugadas').prepend('<li>' + cartas[i] + '</li>');
+                $('#actual').html(cartas[i]);
+                i += 1;
+
+                $('#total').html(54 - i);
+            });
+        });
+
+        function shuffleArray(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array;
+        }
+    </script>
+</body>
+</html>
